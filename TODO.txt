@@ -1,0 +1,45 @@
+- Step 0
+	- Action -> send command to scheduler -> OK
+		-> Authentication-Session (use start method) -> use cookie session
+		-> Reattach old session or purge after login
+		-> Define role, ACL
+		-> Defines thrusted elements (setup with unique id and check for id exchange)
+		-> generates session with more chars
+		-> DOS attack prevention
+	- Scheduler  -> run every 30 second
+		- run operation (with argouments: Session, Source, Command)
+		- introduce cache results (time)
+		- introduce is changed something 
+		- introduce event reaction
+	- Operation -> send command to Source and store Results 
+		- GW VMware with pywimomy
+		- GW Scheduler
+		- GW Proxy 
+	- Event -> Polling event from Sources (thrusted)
+		- User
+		- Session
+		- DOS attack prevention
+		 
+- Step 1 -> Architecture
+	- WS -> Client
+			-> auth -> to Infrastructure
+			-> connect
+			-> get_system_info
+				-> hosts
+				-> VMs
+				-> datastore
+				-> vSwitch
+		 -> Remote system
+		 	-> command
+				-> exec
+					-> get_system_info
+						-> hosts
+						-> VMs
+						-> datastore
+						-> vSwitch
+		 	-> return data
+	
+	- ORM with MySQL WS-Client -> doing
+	- ORM with MySQL WS-Remote -> doing
+	
+	- RabbitMQ
